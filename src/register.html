@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/s2.ico" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/register.css" />
+    <link rel="stylesheet" href="./scss/loader.scss" />
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/auth/register.js"></script>
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body class="indexbody">
+    <!-- Loader -->
+    <div id="preloader">
+      <div class="bookshelf_wrapper">
+        <ul class="books_list">
+          <li class="book_item first"></li>
+          <li class="book_item second"></li>
+          <li class="book_item third"></li>
+          <li class="book_item fourth"></li>
+          <li class="book_item fifth"></li>
+          <li class="book_item sixth"></li>
+        </ul>
+        <div class="shelf"></div>
+      </div>
+    </div>
+    <!-- End of Loader -->
+    <div class="container mt-5">
+      <h1 class="form-title">Registration</h1>
+      <form id="form_register">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="fullname">Full Name</label>
+            <input
+              type="text"
+              id="full_name"
+              name="full_name"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="number"
+              id="phone_number"
+              name="phone_number"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+        </div>
+        <div class="gender-details-box">
+          <span class="gender-title">Gender</span>
+          <div class="gender-category" aria-required="true">
+            <input type="radio" name="gender" id="male" />
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" />
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="other" />
+            <label for="other">Other</label>
+          </div>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <div class="Login-link">
+          <p>Already have an account? <a href="index.html">Login</a></p>
+        </div>
+      </form>
+    </div>
+    <script>
+      var loader = document.getElementById("preloader");
+      window.addEventListener("load", function () {
+        loader.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

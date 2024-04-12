@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/note.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./scss/loader.scss" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="indexbody">
+    <!-- Loader -->
+    <div id="preloader">
+      <div class="bookshelf_wrapper">
+        <ul class="books_list">
+          <li class="book_item first"></li>
+          <li class="book_item second"></li>
+          <li class="book_item third"></li>
+          <li class="book_item fourth"></li>
+          <li class="book_item fifth"></li>
+          <li class="book_item sixth"></li>
+        </ul>
+        <div class="shelf"></div>
+      </div>
+    </div>
+    <!-- End of Loader -->
+    <div class="sidebar">
+      <div class="top">
+        <div class="logo">
+          <i class="bx bx-notepad"></i>
+          <span>Note App</span>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <div class="user">
+        <img src="./assets/imgs/x1.jpg" alt="me" class="user-img" />
+        <div>
+          <p class="bold">Christ G.</p>
+          <p>Owner</p>
+        </div>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-child"></i>
+            <span class="nav-item">Profile</span>
+          </a>
+          <span class="tooltip">Profile</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-help-circle"></i>
+            <span class="nav-item">Help</span>
+          </a>
+          <span class="tooltip">Help</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="nav-item">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        <li>
+          <a type="button" id="btn_logout" href="index.html">
+            <i class="bx bx-log-out"></i>
+            <span class="nav-item">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <div class="container">
+        <h1>My Notes</h1>
+        <input type="text" class="search-input" />
+        <ul class="notes"></ul>
+      </div>
+    </main>
+
+    <button
+      class="add-btn"
+      id="add-btn"
+      aria-label="Create note"
+      onclick="openModal()"
+      ontouchstart="openModal()"
+    >
+      <i class="add-icon"></i>
+    </button>
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <button
+            class="icon-btn back-icon"
+            id="close-btn"
+            aria-label="Close button"
+            onclick="closeModal()"
+          ></button>
+          <button
+            class="save-btn"
+            id="save-btn"
+            aria-label="Save button"
+            form="form"
+          >
+            <p class="ohaha">Save</p>
+          </button>
+        </div>
+        <div class="container">
+          <div class="top-half">
+            <form class="modal-body" id="form">
+              <input type="text" class="title-field" placeholder="Title" />
+              <textarea class="note-field" placeholder="Note"></textarea>
+            </form>
+          </div>
+          <div class="bottom-half"><b>Generated with AI </b></div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="icon-btn star-icon"
+            id="star-btn"
+            aria-label="Star button"
+          ></button>
+          <h5>Foo date, 2023</h5>
+          <button
+            class="icon-btn delete-icon"
+            id="delete-btn"
+            aria-label="Delete button"
+            onclick="deleteNote(editId)"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let btn = document.querySelector("#btn");
+      let sidebar = document.querySelector(".sidebar");
+
+      btn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+
+      var loader = document.getElementById("preloader");
+      window.addEventListener("load", function () {
+        loader.style.display = "none";
+      });
+    </script>
+    <script src="./js/note.js"></script>
+    <script src="./js/auth/profile.js"></script>
+    <!--   <script type="module" src="./js/main.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.app",
+  "appName": "Try-app",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
