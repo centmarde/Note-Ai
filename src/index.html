@@ -29,8 +29,10 @@
 
     <meta name="theme-color" content="#31d53d" />
   </head>
+
   <body class="indexbody">
     <!-- Loader -->
+
     <div id="preloader">
       <div class="bookshelf_wrapper">
         <ul class="books_list">
@@ -44,45 +46,72 @@
         <div class="shelf"></div>
       </div>
     </div>
-    <!-- End of Loader -->
-    <img
-      src="./assets/icon/3693dbdf-0947-427e-83c9-9c8fabfa722e.jpg"
-      alt="Your Image"
-      class="top-image"
-    />
-    <p class="bot">Note Taking App</p>
-    <div class="wrapper">
-      <form action="#" id="loginForm">
-        <h1>Login</h1>
-        <div class="input-box">
-          <input name="email" type="email" placeholder="Email" required />
-          <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
-          <i class="bx bxs-lock-alt"></i>
-        </div>
-        <div class="remember-forgot">
-          <label><input type="checkbox" />Remember Me</label>
-          <a href="#">Forgot Password?</a>
-        </div>
-        <button type="submit" class="btn">Login</button>
 
-        <div class="register-link">
-          <p>
-            Don't have an account?
-            <a href="register.html" id="registerLink">Register</a>
-          </p>
+    <!-- End of Loader -->
+
+    <div class="container">
+      <div class="row">
+        <div id="spacer" class="col-sm d-flex justify-content-center mt-4">
+          <img
+            src="./assets/icon/3693dbdf-0947-427e-83c9-9c8fabfa722e.jpg"
+            alt=""
+            id="top-image"
+            class=""
+          />
         </div>
-      </form>
+
+        <div class="text-center mt-3"><p class="bot">Note Taking App</p></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm d-flex justify-content-center mt-4">
+          <div class="wrapper">
+            <form action="#" id="loginForm">
+              <h1>Login</h1>
+              <div class="input-box">
+                <input name="email" type="email" placeholder="Email" required />
+                <i class="bx bxs-user"></i>
+              </div>
+              <div class="input-box">
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+                <i class="bx bxs-lock-alt"></i>
+              </div>
+              <div class="remember-forgot">
+                <label><input type="checkbox" />Remember Me</label>
+                <a href="#">Forgot Password?</a>
+              </div>
+              <button type="submit" class="btn">Login</button>
+
+              <div class="register-link">
+                <p>
+                  Don't have an account?
+                  <a href="register.html" id="registerLink">Register</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div class="other d-grid justify-content-center">
+            Powered by: ChatGPT
+
+            <img
+              src="./assets/icon/chatgpt-icon.png"
+              alt="Your Image"
+              class="gpt mx-auto"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="other">Powered by: ChatGPT</div>
-    <img src="./assets/icon/chatgpt-icon.png" alt="Your Image" class="gpt" />
+
     <!-- Moved outside the wrapper -->
     <script>
       var loader = document.getElementById("preloader");
