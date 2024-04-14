@@ -19,7 +19,7 @@
       src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
     ></script>
 
-    <link rel="icon" type="image/x-icon" href="./assets/icon/s2.ico" />
+    <link rel="icon" type="image/x-icon" href="./assets/icon/009.jpg" />
     <link rel="manifest" href="./manifest.json" />
 
     <link rel="stylesheet" href="./css/login.css" />
@@ -45,7 +45,12 @@
       </div>
     </div>
     <!-- End of Loader -->
-
+    <img
+      src="./assets/icon/3693dbdf-0947-427e-83c9-9c8fabfa722e.jpg"
+      alt="Your Image"
+      class="top-image"
+    />
+    <p class="bot">Note Taking App</p>
     <div class="wrapper">
       <form action="#" id="loginForm">
         <h1>Login</h1>
@@ -70,13 +75,15 @@
 
         <div class="register-link">
           <p>
-            Dont have an account?
+            Don't have an account?
             <a href="register.html" id="registerLink">Register</a>
           </p>
         </div>
       </form>
     </div>
-
+    <div class="other">Powered by: ChatGPT</div>
+    <img src="./assets/icon/chatgpt-icon.png" alt="Your Image" class="gpt" />
+    <!-- Moved outside the wrapper -->
     <script>
       var loader = document.getElementById("preloader");
       window.addEventListener("load", function () {

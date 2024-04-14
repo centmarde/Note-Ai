@@ -10,10 +10,6 @@
 //   });
 // });
 
-
-
-
-
 const notes = JSON.parse(localStorage.getItem("notes-app") || "[]");
 const search = document.querySelector(".search-input");
 const form = document.getElementById("form");
@@ -28,6 +24,7 @@ let isGridView = false,
 const setGridLayout = () => {
   const cards = document.querySelector(".notes");
   const button = document.getElementById("layout-btn");
+  main;
   cards.classList.add("grid");
   button.classList.add("list-view-icon");
   button.classList.remove("grid-view-icon");

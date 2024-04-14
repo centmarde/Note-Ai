@@ -1,37 +1,35 @@
-import {supabase} from "../main";
+import { supabase } from "../main";
 
 const loginForm = document.getElementById("loginForm");
 
-
 loginForm.onsubmit = async (e) => {
-    e.preventDefault();
-   
-    const formData = new FormData(loginForm);
+  e.preventDefault();
 
-    //supabase sign-in
+  const formData = new FormData(loginForm);
 
-    let { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.get("email"),
-        password: formData.get("password"),
-    });
-    let session = data.session;
-    let user = data.user;
-    console.log(user);
-    if (session != null) {
-        let { data: user_information, error } = await supabase
-        .from("user_information")
-        .select("*")
+  //supabase sign-in
 
-        localStorage.setItem("access_token", session.access_token);
-        localStorage.setItem("user_id", user.id);
+  let { data, error } = await supabase.auth.signInWithPassword({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
+  let session = data.session;
+  let user = data.user;
+  console.log(user);
+  if (session != null) {
+    let { data: user_information, error } = await supabase
+      .from("user_information")
+      .select("*");
 
-        alert("Login Successfully");
-        window.location.pathname = '/note.html';
-    }else {
-        alert(`Error: ${error.message}`);
-        console.log(error);
-    }
+    localStorage.setItem("access_token", session.access_token);
+    localStorage.setItem("user_id", user.id);
 
-   loginForm.reset();
+    // alert("Login Successfully");
+    window.location.pathname = "/note.html";
+  } else {
+    alert(`Error: ${error.message}`);
+    console.log(error);
+  }
+
+  loginForm.reset();
 };
-
