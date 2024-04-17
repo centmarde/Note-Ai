@@ -54,6 +54,10 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+body .main-content {
+  background-color: #ffffff;
+  height: 104vh;
+}
 input {
   font-family: "Roboto Flex", sans-serif;
   border: none;
@@ -267,6 +271,54 @@ main {
   position: fixed;
 }
 
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: #ffffff;
+  z-index: 1000;
+  pointer-events: none;
+  transition: all 0.1s linear;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.modal.expanded {
+  visibility: visible;
+  pointer-events: auto;
+  height: 100%;
+}
+
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem 1rem;
+  background-color: #12171e;
+}
+.modal-header .ohaha {
+  color: #12171e;
+  font: bold;
+}
+.modal-header .save-btn {
+  color: var(--white);
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -284,11 +336,41 @@ main {
   color: #12171e;
   font: bold;
 }
-#card_color {
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
+  height: 100%;
+  margin-bottom: auto;
   background-color: #12171e;
-  color: white;
 }
 
-.main-content {
-  background-color: #eee;
+.modal-body .title-field {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.modal-body .note-field {
+  font-size: 1rem;
+  height: 100%;
+  color: #ffffff;
+}
+
+.modal-footer {
+  display: none;
+  background-color: rgb(80, 114, 123);
+}
+
+.modal.edit .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-footer h5 {
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto;
 }

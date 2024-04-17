@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .col-md-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Adjustments for extra small screens */
+@media (max-width: 576px) {
+  .col- sm {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  .upload {
+    margin-top: 20px;
+  }
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 992px) {
+  .other {
+    margin-top: 20px;
+  }
+}
+
+.profilebody {
+  background-color: #12171e;
+}
+#profile {
+  width: 150px; /* Adjust width as needed */
+  height: 150px; /* Set height to match width for a perfect circle */
+  z-index: 1; /* Ensure the image stays behind other elements */
+  color: #12171e;
+  border-radius: 50%;
+  border: 2px solid #fff; /* Add solid border with color #fff */
+  margin-bottom: 5vh;
+}
+.bot {
+  background-color: #12171e;
+  text-align: center;
+  color: #fff;
+  font-style: italic;
+  font-size: x-large;
+  z-index: 1;
+}
+.other {
+  background-color: #12171e;
+  margin-top: 5vh;
+  color: #fff;
+  font-style: italic;
+  font-size: large;
+}
+#user {
+  margin-top: 5vh;
+  color: #fff;
+  font-size: large;
+  margin-left: 2vh;
+}
+#user1 {
+  margin-top: 5vh;
+  color: #fff;
+  font-size: large;
+  margin-left: 2vh;
+  margin-top: 2vh;
+}
+#user2 {
+  margin-top: 2vh;
+  color: #fff;
+  font-size: large;
+  margin-left: 2vh;
+}
+#user3 {
+  margin-top: 2vh;
+  color: #fff;
+  font-size: large;
+  margin-left: 2vh;
+}
+
+.container .form-control {
+  margin-top: 2vh;
+}
+.container .input-group {
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+.upload {
+  margin-left: 6vh;
+  margin-bottom: 2vh;
+  background-color: #12171e;
+  text-align: center;
+  color: #fff;
+  font-style: italic;
+  z-index: 1;
+}
+.btn {
+}

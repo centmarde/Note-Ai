@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="./assets/icon/009.jpg" />
-    <link rel="stylesheet" href="./css/profile.css" />
+
     <link rel="stylesheet" href="./css/note.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./scss/loader.scss" />
@@ -21,7 +21,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="indexbody">
+  <body class="indexbody" style="background-color: aliceblue">
     <!-- Loader -->
     <div id="preloader">
       <div class="bookshelf_wrapper">
@@ -52,36 +52,22 @@
           <p>Owner</p>
         </div>
       </div>
-
       <ul>
-        <li>
+        <!-- <li>
           <a href="#">
             <i class="bx bxs-grid-alt"></i>
-            <span class="nav-item">Dashboard</span>
+            <span class="nav-item">Dashboard</span> 
           </a>
           <span class="tooltip">Dashboard</span>
-        </li>
+        </li> -->
         <li>
-          <a href="#">
+          <a href="profile.html">
             <i class="bx bx-child"></i>
             <span class="nav-item">Profile</span>
           </a>
           <span class="tooltip">Profile</span>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-help-circle"></i>
-            <span class="nav-item">Help</span>
-          </a>
-          <span class="tooltip">Help</span>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span class="nav-item">Settings</span>
-          </a>
-          <span class="tooltip">Settings</span>
-        </li>
+
         <li>
           <a type="button" id="btn_logout" href="index.html">
             <i class="bx bx-log-out"></i>
@@ -92,81 +78,101 @@
       </ul>
     </div>
 
-    <main class="main-content">
-      <div class="container">
-        <h1>My Notes</h1>
-        <input type="text" class="search-input" />
-        <ul class="notes"></ul>
-      </div>
-    </main>
-
-    <button
-      class="add-btn"
-      id="add-btn"
-      aria-label="Create note"
-      onclick="openModal()"
-      ontouchstart="openModal()"
-    >
-      <i class="add-icon"></i>
-    </button>
-    <div class="modal">
-      <div class="modal-inner">
-        <div class="modal-header">
-          <button
-            class="icon-btn back-icon"
-            id="close-btn"
-            aria-label="Close button"
-            onclick="closeModal()"
-          ></button>
-          <button
-            class="save-btn"
-            id="save-btn"
-            aria-label="Save button"
-            form="form"
-          >
-            <p class="ohaha">Save</p>
-          </button>
-        </div>
-        <div class="container">
-          <div class="top-half">
-            <form class="modal-body" id="form">
-              <input type="text" class="title-field" placeholder="Title" />
-              <textarea class="note-field" placeholder="Note"></textarea>
-            </form>
-          </div>
-          <div class="bottom-half"><b>Generated with AI </b></div>
-        </div>
-        <div class="modal-footer">
-          <button
-            class="icon-btn star-icon"
-            id="star-btn"
-            aria-label="Star button"
-          ></button>
-          <h5>Foo date, 2023</h5>
-          <button
-            class="icon-btn delete-icon"
-            id="delete-btn"
-            aria-label="Delete button"
-            onclick="deleteNote(editId)"
-          ></button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 col-lg-1 col-md-2"></div>
+        <div class="col-9 col-lg-11 col-md-10">
+          <h1 class="mt-3">My Notes</h1>
+          <br /><br />
+          <div id="noteContainer"></div>
         </div>
       </div>
     </div>
+
+    <button
+      class="add-btn"
+      aria-label="Create note"
+      data-bs-toggle="modal"
+      data-bs-target="#modal_fade"
+    >
+      <i class="add-icon"></i>
+    </button>
+
+    <!-- modal -->
+    <div
+      class="modal fade"
+      id="modal_fade"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          style="background-color: #12171e; color: white"
+          class="modal-content"
+        >
+          <form id="form_note">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Insert Note
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style="background-color: #12171e"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mt-5">
+                <textarea
+                  class="form-control my-3"
+                  name="title"
+                  id="title"
+                  placeholder="Title"
+                  rows="1"
+                ></textarea>
+              </div>
+
+              <div class="input-group mb-3">
+                <textarea
+                  class="form-control"
+                  name="description"
+                  id="description"
+                  placeholder="Description"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-light"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button id="btn_save" type="button" class="btn btn-light">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end of modal -->
     <script>
-      let btn = document.querySelector("#btn");
-      let sidebar = document.querySelector(".sidebar");
-
-      btn.onclick = function () {
-        sidebar.classList.toggle("active");
-      };
-
       var loader = document.getElementById("preloader");
       window.addEventListener("load", function () {
         loader.style.display = "none";
       });
     </script>
-    <script src="./js/note.js"></script>
-    <script src="./js/auth/profile.js"></script>
+    <script type="module" src="./js/note.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/auth/profile.js"></script>
     <!--   <script type="module" src="./js/main.js"></script> -->
   </body>
 </html>
+x-icon

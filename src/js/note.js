@@ -1,150 +1,42 @@
-// import{
-//   doLogout,
-// } from "./main";
+import { supabase } from "./main";
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   const btn_logout = document.getElementById("btn_logout");
-
-//   btn_logout.addEventListener("click", function() {
-//     alert("Logout successfully");
-//   });
-// });
-
-const notes = JSON.parse(localStorage.getItem("notes-app") || "[]");
-const search = document.querySelector(".search-input");
-const form = document.getElementById("form");
-const saveBtn = document.getElementById("save-btn");
-const titleField = document.querySelector(".title-field");
-const noteField = document.querySelector(".note-field");
-
-let isGridView = false,
-  isEdit = false,
-  editId;
-
-const setGridLayout = () => {
-  const cards = document.querySelector(".notes");
-  const button = document.getElementById("layout-btn");
-  main;
-  cards.classList.add("grid");
-  button.classList.add("list-view-icon");
-  button.classList.remove("grid-view-icon");
-  isGridView = true;
-};
-
-const setListLayout = () => {
-  const cards = document.querySelector(".notes");
-  const button = document.getElementById("layout-btn");
-  cards.classList.remove("grid");
-  button.classList.add("grid-view-icon");
-  button.classList.remove("list-view-icon");
-  isGridView = false;
-};
-
-const toggleLayout = () => {
-  !isGridView ? setGridLayout() : setListLayout();
-};
-
-const openModal = () => {
-  const modal = document.querySelector(".modal");
-  const main = document.querySelector("main");
-  modal.classList.add("expanded");
-  main.classList.add("overlay");
-};
-
-const closeModal = () => {
-  const modal = document.querySelector(".modal");
-  const main = document.querySelector("main");
-  modal.classList.remove("expanded");
-  main.classList.remove("overlay");
-  if (modal.classList.contains("edit")) {
-    modal.classList.remove("edit");
+const userId = localStorage.getItem("user_id");
+document.body.addEventListener("click", function (event) {
+  if (event.target.id === "btn_save") {
+    form(event);
   }
-  form.reset();
-};
+});
 
-const headerOnScroll = () => {
-  const header = document.querySelector("header");
-  let scrollPrev = window.pageYOffset;
-  window.onscroll = () => {
-    let scrollCur = window.pageYOffset;
-    scrollPrev > scrollCur
-      ? (header.style.top = "0")
-      : (header.style.top = "-64px");
-    scrollPrev = scrollCur;
-  };
-};
-
-const displayNotes = () => {
-  let li = "";
-  const cards = document.querySelector(".notes");
-  notes.forEach((note, i) => {
-    li += `
-            <li class="note" data-note-id="${note.id}" onclick="editNote(${i}, '${note.title}', '${note.description}')">
-                <h3>${note.title}</h3>
-                <p>${note.description}</p>
-            </li>
-        `;
-  });
-  cards.innerHTML = li;
-};
-
-const deleteNote = (noteId) => {
-  const confirmDelete = confirm("Are you sure you want to delete this note?");
-  if (!confirmDelete) return;
-  notes.splice(noteId, 1);
-  localStorage.setItem("notes-app", JSON.stringify(notes));
-  closeModal();
-  displayNotes();
-};
-
-const editNote = (noteId, title, description) => {
-  isEdit = true;
-  editId = noteId;
-  const modal = document.querySelector(".modal");
-  const today = new Date();
-  const format = { month: "short", day: "numeric", year: "numeric" };
-  const date = today.toLocaleDateString("en-us", format);
-  document.querySelector(".modal-footer h5").innerText = date;
-  titleField.value = title;
-  noteField.value = description;
-  modal.classList.add("edit");
-  openModal();
-};
-
-saveBtn.addEventListener("click", (e) => {
+getDatas();
+const form = async (e) => {
   e.preventDefault();
-  let titleInput = titleField.value.trim();
-  let noteInput = noteField.value.trim();
-  if (titleInput || noteInput) {
-    let note = {
-      title: titleInput,
-      description: noteInput,
-      id: Math.floor(Math.random() * 1000000),
-    };
-    if (!isEdit) {
-      notes.push(note);
-    } else {
-      isEdit = false;
-      notes[editId] = note;
-    }
-    localStorage.setItem("notes-app", JSON.stringify(notes));
-    closeModal();
-    displayNotes();
+  const formData = new FormData(form_note);
+  const { data, error } = await supabase.from("note").insert([
+    {
+      title: formData.get("title"),
+      description: formData.get("description"),
+    },
+  ]);
+  if (error) {
+    console.log(error);
   } else {
-    closeModal();
+    alert("Note Added!");
+    window.location.reload();
   }
-});
+};
 
-search.addEventListener("keyup", () => {
-  const note = document.querySelectorAll(".note");
-  const input = search.value.toUpperCase();
-  for (let i = 0; i < note.length; i++) {
-    let card = note[i];
-    card.innerHTML.toUpperCase().indexOf(input) > -1
-      ? (note[i].style.display = "")
-      : (note[i].style.display = "none");
-  }
-});
+async function getDatas() {
+  let { data: notes, error } = await supabase.from("note").select("*");
 
-headerOnScroll();
-displayNotes();
+  let container = "";
+  notes.forEach((datas) => {
+    container += `<div class=" card w-100 mb-3 shadow">
+    <div id="card_color" class="card-body rounded">
+      <h5 class="card-title">${datas.title}</h5>
+      <p class="card-text">${datas.description}</p>
+    </div>
+  </div>`;
+  });
+
+  document.getElementById("noteContainer").innerHTML = container;
+}

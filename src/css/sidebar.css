@@ -9,6 +9,7 @@
   width: 50px;
   border-radius: 100%;
   border: 1px solid #eee;
+  margin-left: 15px;
 }
 
 .sidebar {
@@ -18,7 +19,7 @@
   height: 104vh;
   width: 80px;
   background-color: #12171e;
-  padding: 0.4rem 0.8rem;
+
   transition: all 0.5s ease;
 }
 
@@ -91,6 +92,7 @@
 
 .sidebar ul li {
   position: relative;
+  right: 17px;
   list-style-type: none;
   height: 50px;
   width: 90%;
@@ -104,11 +106,6 @@
   align-items: center;
   text-decoration: none;
   border-radius: 0.8rem;
-}
-
-.sidebar ul li a:hover {
-  background-color: #fff;
-  color: #12171e;
 }
 
 .sidebar ul li a i {
@@ -145,15 +142,4 @@
 
 .sidebar.active ul li .tooltip {
   display: none;
-}
-
-.main-content {
-  position: relative;
-  background-color: #eee;
-  min-height: 100vh;
-  top: 0;
-  left: 80px;
-  transition: all 0.5s ease;
-  width: calc(100% - 80px);
-  padding: 1rem;
 }

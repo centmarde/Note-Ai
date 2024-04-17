@@ -52,7 +52,7 @@ body {
 }
 
 .user-input-box label {
-  width: 95%;
+  width: 100%;
   color: white;
   font-size: 20px;
   font-weight: 400;
@@ -61,7 +61,7 @@ body {
 
 .user-input-box input {
   height: 40px;
-  width: 95%;
+  width: 100%;
   border-radius: 7px;
   outline: none;
   border: 1px solid grey;

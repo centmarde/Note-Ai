@@ -4,6 +4,20 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px; /* Adjust padding as needed */
+  }
+}
+
+/* CSS for smartphones */
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px; /* Adjust padding as needed */
+  }
+}
 .indexbody {
   display: flex;
   justify-content: center;
