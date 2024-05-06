@@ -1,4 +1,4 @@
-import { supabase } from "./main";
+import { doLogout, supabase } from "./main";
 
 const userId = localStorage.getItem("user_id");
 document.body.addEventListener("click", function (event) {
@@ -7,6 +7,13 @@ document.body.addEventListener("click", function (event) {
   }
 });
 
+document
+  .getElementById("btn_logout")
+  .addEventListener("click", function (event) {
+    // Prevent the default behavior of the anchor tag
+    event.preventDefault();
+    doLogout();
+  });
 getDatas();
 const form = async (e) => {
   e.preventDefault();

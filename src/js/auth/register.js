@@ -8,7 +8,7 @@ form_register.onsubmit = async (e) => {
   const formData = new FormData(form_register);
   if (formData.get("password") == formData.get("confirmPassword")) {
     alert("Password matched!");
-  }
+  } else alert("Password does not match!");
 
   //supabase login
   const { data, error } = await supabase.auth.signUp({
@@ -30,16 +30,15 @@ form_register.onsubmit = async (e) => {
           username: formData.get("username"),
           email: formData.get("email"),
           gender: formData.get("gender"),
-          phone_number: formData.get("phone_number")
+          phone_number: formData.get("phone_number"),
         },
       ])
       .select();
 
     //if succes registration condition
     if (error == null) {
-   
-        alert("Register Successfully please verify your email");
-       
+      alert("Register Successfully please verify your email");
+
       console.log(data);
       console.log(error);
     } else {
@@ -47,7 +46,6 @@ form_register.onsubmit = async (e) => {
     }
 
     form_register.reset();
-  
   } else {
     alert(`Error: ${error.message}`);
     console.log(data);

@@ -5,11 +5,11 @@ import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 // Show the wrapper after the page has fully loaded
 
-// import { setRouter } from "./router/router";
+import { setRouter } from "./router/router";
 
 import { createClient } from "@supabase/supabase-js";
 
-// setRouter();
+setRouter();
 
 const supabase = createClient(
   "https://jdrbeyywzehkravlqofg.supabase.co",
@@ -21,7 +21,7 @@ async function doLogout() {
   let { error } = await supabase.auth.signOut();
 
   if (error == null) {
-    successNotification("Logout Successfully!");
+    alert("Logout Successfully!");
 
     // Clear local Storage
     localStorage.clear();
@@ -29,7 +29,7 @@ async function doLogout() {
     // Redirect to login page
     window.location.pathname = "/index.html";
   } else {
-    errorNotification("Logout Failed!", 15);
+    alert("Logout Failed!");
   }
 }
 

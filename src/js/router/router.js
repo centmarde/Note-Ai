@@ -3,8 +3,8 @@ function setRouter() {
   const isLoggedIn = localStorage.getItem("access_token") !== null;
   switch (path) {
     case "/":
-    case "index.html":
-    case "register.html":
+    case "/index.html":
+    case "/register.html":
       if (isLoggedIn) {
         window.location.pathname = "/note.html"; // default page when logged in
       }
